@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('content');
-            $table->text('img_cover');
+            $table->text('img_cover')->nullable();
             $table->enum('status', ['archive', 'publish', 'draft']);
-            $table->boolean('is_highlight')->default(true);
-            $table->foreignId('created_by')->nullable();
-            $table->foreignId('updated_by')->nullable();
+            $table->boolean('is_highlight')->default(false);
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->constrained('users');
             $table->timestampsTz($precision = 0);
         });
     }

@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('sender_name')->nullable();
+            $table->boolean('type'); // 0 = kritik, 1 = saran
+            $table->foreignId('category_id')->constrained('feedback_categories');
+            $table->text('message');
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->timestampsTz($precision = 0);
         });
     }
 

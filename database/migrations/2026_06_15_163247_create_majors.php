@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('img_logo');
             $table->string('code', 10);
-            $table->string('major_name');
-            $table->id();
-            $table->id();
-            $table->id();
-            $table->id();
-            $table->id();
-            $table->foreignId('created_by')->nullable();
-            $table->foreignId('updated_by')->nullable();
+            $table->string('major_name', 100);
+            $table->string('summary');
+            $table->integer('total_classes');
+            $table->integer('major_duration');
+            $table->text('full_description');
+            $table->boolean('status_code')->default(true);
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestampsTz($precision = 0);
         });
     }

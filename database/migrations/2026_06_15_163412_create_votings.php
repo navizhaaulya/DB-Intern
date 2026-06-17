@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('votings', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('slug')->unique();
+            $table->text('img_cover')->nullable();
+            $table->string('title');
+            $table->string('description');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->boolean('status_code')->default(true);
+            $table->boolean('is_highlight')->default(false);
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->constrained('users');
+            $table->timestampsTz($precision = 0);
         });
     }
 

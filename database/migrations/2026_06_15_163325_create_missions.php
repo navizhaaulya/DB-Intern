@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('content');
             $table->integer('order');
-            $table->boolean('status_code');
-            $table->foreignId('created_by')->nullable();
-            $table->foreignId('updated_by')->nullable();
+            $table->boolean('status_code')->default(true);
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestampsTz($precision = 0);
         });
     }
