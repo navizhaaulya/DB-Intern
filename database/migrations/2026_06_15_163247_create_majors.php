@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('majors', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('slug')->unique();
+            $table->text('img_logo');
+            $table->string('code', 10);
+            $table->string('major_name');
+            $table->id();
+            $table->id();
+            $table->id();
+            $table->id();
+            $table->id();
+            $table->foreignId('created_by')->nullable();
+            $table->foreignId('updated_by')->nullable();
+            $table->timestampsTz($precision = 0);
         });
     }
 

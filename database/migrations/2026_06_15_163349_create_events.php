@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('slug')->unique();
+            $table->string('title');
+            $table->text('content');
+            $table->string('location')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->text('img_cover');
+            $table->enum('status', ['archive', 'publish', 'draft']);
+            $table->boolean('is_highlight')->default(true);
+            $table->foreignId('created_by')->nullable();
+            $table->foreignId('updated_by')->nullable();
+            $table->timestampsTz($precision = 0);
         });
     }
 

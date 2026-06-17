@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('missions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('content');
+            $table->integer('order');
+            $table->boolean('status_code');
+            $table->foreignId('created_by')->nullable();
+            $table->foreignId('updated_by')->nullable();
+            $table->timestampsTz($precision = 0);
         });
     }
 
