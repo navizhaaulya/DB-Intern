@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('voting_candidates', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('voting_id')->constrained('votings')->onDelete('cascade');
+            $table->text('img_cover');
+            $table->string('title');
+            $table->string('description');
+            $table->integer('order');
+            $table->boolean('status_code')->default('true');
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->timestampsTz($precision = 0);
         });
     }
 

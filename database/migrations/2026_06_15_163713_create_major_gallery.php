@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('major_id')->constrained('majors')->onDelete('cascade');
             $table->text('img_cover');
             $table->string('description');
-            $table->foreignId('created_by')->nullable();
-            $table->foreignId('updated_by')->nullable();
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestampsTz($precision = 0);
         });
     }

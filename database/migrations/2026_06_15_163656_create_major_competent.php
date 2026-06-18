@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('major_competent', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('major_id')->constrained('majors');
+            $table->string('competent_name', 50);
+            $table->string('description');
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->timestampsTz($precision = 0);
         });
     }
 

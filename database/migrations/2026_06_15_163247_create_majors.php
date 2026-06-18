@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('major_duration');
             $table->text('full_description');
             $table->boolean('status_code')->default(true);
-            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestampsTz($precision = 0);
         });

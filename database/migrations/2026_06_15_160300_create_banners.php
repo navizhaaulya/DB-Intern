@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('img_cover');
             $table->text('url')->nullable();
             $table->boolean('status_code')->default(true);
-            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestampsTz($precision = 0);
         });
