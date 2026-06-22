@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('voting_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('voting_id')->constrained('voting');
+            $table->foreignId('voting_id')->constrained('votings');
             $table->foreignId('candidate_id')->constrained('voting_candidates');
             $table->foreignId('user_id')->constrained('users');
             $table->timestampsTz($precision = 0);
